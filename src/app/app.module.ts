@@ -1,3 +1,4 @@
+import { AccountModule } from './account/account.module';
 
 import { BaseHomeModule } from './base-home/base-home.module';
 import { AppRoutingModule } from './app-routing.module';
@@ -13,7 +14,8 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BaseHomeModule
+    BaseHomeModule,
+    AccountModule
     
   ],
   providers: [],

@@ -1,7 +1,7 @@
 import { RegistrationComponent } from '../registration/registration.component';
 import { LoginComponent } from '../login/login.component';
 import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import { RouterModule, Routes, Router } from '@angular/router';
 
 const baseHomeRoutes: Routes = [
 	{
@@ -19,4 +19,10 @@ const baseHomeRoutes: Routes = [
     ],
     exports: [ RouterModule ]
 })
-export class BaseHomeRoutingModule { }
+export class BaseHomeRoutingModule { 
+    constructor(private router: Router){
+        if (localStorage.getItem("currentUser") != null) {
+            this.router.navigate(["/user"]);            
+        }
+    }
+}

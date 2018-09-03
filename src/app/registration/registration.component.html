@@ -5,13 +5,25 @@
           <div class="account-wall">
               <img class="profile-img" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120"
                   alt="">
-              <form class="form-signup" [formGroup]="form">
-                 <input type="text" formControlName="name" class="form-control" placeholder="Name" required autofocus>
-              <input type="text" formControlName="email" class="form-control" placeholder="Email" required autofocus>
-              <input type="text" formControlName="username" class="form-control" placeholder="User Name" required autofocus>
-              <input type="password" formControlName="password"  class="form-control" placeholder="Password" required autofocus>
-              <input type="text" formControlName="contact" class="form-control" placeholder="Contact Number" required autofocus>
-              <button class="btn btn-lg btn-primary btn-block" type="submit">
+                  
+              <form class="form-signup" [formGroup]="form" >
+                <div *ngFor="let error of errorMessage">
+                    {{ error }}
+                </div>
+                 <input type="text"  formControlName="firstName" class="form-control " placeholder="firstName" required autofocus>
+                
+                 <input type="text" formControlName="lastName" class="form-control" placeholder="lastName" required>
+                 
+                 
+              <input type="text"  formControlName="email" (blur)="checkEmailExist($event.target.value)" class="form-control" placeholder="Email" required ng-pattern="/^[A-Za-z0-9._%+-]+@gssltd.co.in$/">
+              
+              <input type="text" formControlName="userName" class="form-control" placeholder="User Name" required >
+              
+              <input type="password" formControlName="password"  class="form-control" placeholder="Password" required >
+             
+              <input type="text" formControlName="contact" class="form-control" placeholder="Contact Number" required >
+             
+              <button class="btn btn-lg btn-primary btn-block" type="button"  (click)="createUser();">
                   Sign Up</button>
               
               </form>
